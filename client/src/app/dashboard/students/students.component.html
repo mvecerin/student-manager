@@ -1,0 +1,59 @@
+<div class="data-table">
+  <h2>Students</h2>
+
+  <table mat-table [dataSource]="joins">
+
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let join; let i = index"> {{i+1}}. </td>
+    </ng-container>
+
+    <ng-container matColumnDef="jmbag">
+      <th mat-header-cell *matHeaderCellDef> Student ID </th>
+      <td mat-cell *matCellDef="let join"> {{join.jmbag}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fName">
+      <th mat-header-cell *matHeaderCellDef> First name </th>
+      <td mat-cell *matCellDef="let join"> {{join.fName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lName">
+      <th mat-header-cell *matHeaderCellDef> Last name </th>
+      <td mat-cell *matCellDef="let join"> {{join.lName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sum">
+      <th mat-header-cell *matHeaderCellDef> SUM </th>
+      <td mat-cell *matCellDef="let join"> {{join?.sum | default: 0}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let join; let i = index">
+        <button type="button" color="accent" mat-icon-button (click)="openDialog(editString, true, i)">
+          <mat-icon aria-hidden="false" aria-label="edit">
+            edit
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Remove </th>
+      <td mat-cell *matCellDef="let join; let i = index">
+        <button type="button" color="warn" mat-icon-button (click)="deleteStudent(i)">
+          <mat-icon aria-hidden="false" aria-label="delete">
+            clear
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <button mat-flat-button color="accent" (click)="openDialog(addString, false)">Add Student</button>
+
+</div>

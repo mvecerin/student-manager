@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+  <form id="dialog-form-lessons" (submit)="close()" [formGroup]="form">
+
+    <fieldset>
+      <label for="title">Lesson title</label>
+      <input type="text" formControlName="title" placeholder="Title">
+    </fieldset>
+    <fieldset>
+        <label for="maxScore">Max score for lesson: </label>
+        <input type="number" formControlName="maxScore" placeholder="Max score">
+    </fieldset>
+
+    <div mat-dialog-actions>
+      <button [disabled]="form.invalid" type="submit" mat-flat-button color="accent">OK</button>
+      <button color="warn" mat-button mat-dialog-close>Cancel</button>
+    </div>
+
+  </form>
+</div>
+

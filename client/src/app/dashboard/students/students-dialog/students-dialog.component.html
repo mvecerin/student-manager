@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+  <form id="dialog-form-students" (submit)="close()" [formGroup]="form">
+
+    <fieldset>
+      <label for="fName">First name</label>
+      <input type="text" formControlName="fName" placeholder="First name">
+    </fieldset>
+    <fieldset>
+      <label for="lName">Last name</label>
+      <input type="text" formControlName="lName" placeholder="Last name">
+    </fieldset>
+    <fieldset>
+      <label for="jmbag">Student ID</label>
+      <input type="text" formControlName="jmbag" placeholder="Student ID">
+    </fieldset>
+
+    <div mat-dialog-actions>
+      <button [disabled]="form.invalid" type="submit" mat-flat-button color="accent">OK</button>
+      <button color="warn" mat-button mat-dialog-close>Cancel</button>
+    </div>
+
+  </form>
+</div>
+

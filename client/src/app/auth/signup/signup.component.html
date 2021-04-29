@@ -1,0 +1,34 @@
+<div class="container mat-app-background">
+  <form (submit)="signup()" [formGroup]="form">
+      <h2>Sign up</h2>
+
+      <fieldset>
+        <label for="fName">First name</label>
+        <input type="text" formControlName="fName" placeholder="First name">
+      </fieldset>
+      <fieldset>
+        <label for="lName">Last name</label>
+        <input type="text" formControlName="lName" placeholder="Last name">
+      </fieldset>
+      <fieldset>
+        <label for="email">E-mail</label>
+        <input type="email" formControlName="email" placeholder="E-mail">
+      </fieldset>
+      <fieldset>
+          <label for="password">Password</label>
+          <input type="password" formControlName="password" placeholder="Password">
+      </fieldset>
+      <fieldset>
+          <label for="passwordRepeat">Repeat password</label>
+          <input type="password" formControlName="passwordRepeat" placeholder="Repeat password">
+      </fieldset>
+
+
+      <p class="tiny">Already have an account? <a href="" [routerLink]="['../login']">Log in</a></p>
+      <div *ngIf="message" class="error">{{message}}</div>
+      <button [disabled]="form.invalid" mat-flat-button color="accent" type="submit">
+        Sign up
+      </button>
+
+  </form>
+</div>

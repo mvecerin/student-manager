@@ -1,0 +1,72 @@
+<div class="data-table">
+  <h2>Lessons</h2>
+
+  <table *ngIf="joins" mat-table [dataSource]="lessons">
+
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let join; let i = index"> {{i+1}}. </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let join">{{join.title}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="avg">
+      <th mat-header-cell *matHeaderCellDef> Average score </th>
+      <td mat-cell *matCellDef="let join">
+        {{join?.avg | default: 0 | number: '1.2'}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="maxScore">
+      <th mat-header-cell *matHeaderCellDef> Max score </th>
+      <td mat-cell *matCellDef="let join"> {{join.maxScore}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateAdded">
+      <th mat-header-cell *matHeaderCellDef> Date added </th>
+      <td mat-cell *matCellDef="let join"> {{join.dateAdded | date: 'd/M/yy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="editLesson">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let join; let i = index">
+        <button type="button" color="accent" mat-icon-button (click)="openDialog(editString, true, i)">
+          <mat-icon aria-hidden="false" aria-label="edit">
+            edit
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deleteLesson">
+      <th mat-header-cell *matHeaderCellDef> Remove </th>
+      <td mat-cell *matCellDef="let join; let i = index">
+        <button type="button" color="warn" mat-icon-button (click)="deleteLesson(i)">
+          <mat-icon aria-hidden="false" aria-label="delete">
+            clear
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="scoreInput">
+      <th mat-header-cell *matHeaderCellDef> Score input </th>
+      <td mat-cell *matCellDef="let join; let i = index">
+        <a mat-icon-button color="primary" [routerLink]="join._id">
+          <mat-icon aria-hidden="false" aria-label="scores">
+            open_in_new
+          </mat-icon>
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <button mat-flat-button color="accent" (click)="openDialog(addString, false)">Add lesson</button>
+
+</div>

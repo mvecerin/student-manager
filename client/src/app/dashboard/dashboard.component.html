@@ -1,0 +1,45 @@
+<mat-toolbar color="primary" id="toolbar">
+  <button id="menu-btn" type="button" mat-button (click)="drawer.toggle()">
+    <mat-icon aria-hidden="false" aria-label="menu">{{drawer.opened ? 'arrow_back' : 'menu'}}</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-drawer-container class="dash-container">
+  <mat-drawer #drawer class="dash-sidenav" mode="side" opened>
+
+    <mat-list *ngIf="user">
+      <mat-list-item>
+        <h1>Application</h1>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <mat-icon matListIcon aria-hidden="true">face</mat-icon>
+        <h4 matLine>{{user.fName}} {{user.lName}}</h4>
+        <h5 *ngIf="user.subject" matLine>{{user.subject.name}}</h5>
+      </mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+    <mat-nav-list>
+      <mat-list-item [routerLink]="['./lessons']">
+        <mat-icon matListIcon>list_alt</mat-icon>
+        <a matLine>Lessons</a>
+      </mat-list-item>
+      <mat-list-item [routerLink]="['./students']">
+        <mat-icon matListIcon>people</mat-icon>
+        <a matLine>Students</a>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+    <mat-action-list>
+      <mat-list-item (click)="logout()">
+        <mat-icon matListIcon color="warn">logout</mat-icon>
+        <button type="button" mat-button color="warn">
+          Sign out
+        </button>
+      </mat-list-item>
+    </mat-action-list>
+
+  </mat-drawer>
+  <router-outlet></router-outlet>
+
+</mat-drawer-container>
+

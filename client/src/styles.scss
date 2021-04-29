@@ -1,0 +1,84 @@
+@import 'custom-theme.scss';
+
+html, body { height: 100%; box-sizing: border-box; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Dashboard */
+.dash-container {
+  width: 100%;
+  height: 100%;
+}
+.dash-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.dash-sidenav {
+  width: 300px;
+  padding: 20px;
+}
+#toolbar {
+  height: 50px;
+}
+#menu-btn {
+  min-width: unset;
+}
+
+// Tables
+table {
+  width: 100%;
+  min-width: 670px;
+  max-width: 1000px;
+  margin: 20px 0;
+}
+.data-table {
+  padding: 30px 15px;
+  display: block;
+}
+tr.mat-row:hover {
+  background-color: whitesmoke;
+}
+.data-table .mat-icon-button:hover {
+  background-color: lightgray;
+}
+
+
+// Dialog
+#dialog-form-lessons {
+  min-height: 210px;
+}
+#dialog-form-students {
+  min-height: 275px;
+}
+
+/* Forms */
+.container {
+  max-width: 400px;
+  margin: 80px auto 0;
+  padding: 15px;
+  border-radius: 10px;
+}
+fieldset {
+  border: none;
+  padding-left: 0;
+}
+input{
+  width: 100%;
+  height: 30px;
+}
+input[type=number] {
+  max-width: 80px;
+}
+.tiny {
+  color: #4d4949;
+}
+.error {
+  color: rgb(255, 51, 0);
+  padding: 20px 0;
+}
+
+/* Mobile */
+@media only screen and (min-width: 500px) {
+
+}
